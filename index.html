@@ -77,8 +77,14 @@
             mouse_position_72e597d7aa064c78953d80fb7207e7c6.options["lngFormatter"] =
                 function(num) {return L.Util.formatNum(num, 3) + ' º ';};;
             map_15340c3428144bd6b0adb4d11b98de68.addControl(mouse_position_72e597d7aa064c78953d80fb7207e7c6);
+            // 自己改的部分
             map_15340c3428144bd6b0adb4d11b98de68.on('dblclick', function(e) {
-    alert("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
+            	var lat = e.latlng.lat;
+            	var lon = e.latlng.lng;
+            	var click_mark = L.marker([lat,lon]).addTo(map_15340c3428144bd6b0adb4d11b98de68);
+            	var popupmsg = `ClickForGoogleMap<br><a href="https://maps.google.com/?q=${lat},${lon}">GoogleMap</a>`;
+    // alert("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
+    click_mark.bindPopup(popupmsg).openPopup();
 });
         
 </script>
